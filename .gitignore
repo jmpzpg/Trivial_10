@@ -127,3 +127,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# ademas de lo anterior
+
+OS junk files [Tt]humbs.db *.DS_Store
+
+# VScode
+.vscode
