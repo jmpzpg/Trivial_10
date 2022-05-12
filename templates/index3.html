@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./bulma/css/bulma.css">
+    <link rel="stylesheet" href="icons/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/website.css">
+    <link rel="stylesheet" href="./bulma/css/estilos.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar has-shadow">
+        <div class="navbar-brand">
+          <a class="navbar-item">
+            <img src="images/icon.png">
+          </a>
+          <div class="navbar-burger burger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+  
+        <div class="navbar-menu">
+          <div class="navbar-start">
+            <div class="navbar-item">
+              <div>
+                <img src="images/type.png" width="250.5" height="21">
+                <br>
+                <small>Experimento de Programación con Bulma</small>
+              </div>
+            </div>
+          </div>
+  
+          <div class="navbar-end">
+            <div class="navbar-item has-dropdown is-hoverable">
+              <div class="navbar-link">
+                Menú
+              </div>
+              <div class="navbar-dropdown is-right">
+                <a class="navbar-item">
+                  <div>
+                    <span class="icon is-small">
+                      <i class="fa fa-user-circle-o"></i>
+                    </span>
+                    Alta de Persona
+                  </div>
+                </a>
+                <a class="navbar-item">
+                  <div>
+                    <span class="icon is-small">
+                      <i class="fa fa-bug"></i>
+                    </span>
+                    Editar Persona
+                  </div>
+                </a>
+                <a class="navbar-item">
+                  <div>
+                    <span class="icon is-small">
+                      <i class="fa fa-sign-out"></i>
+                    </span>
+                    Salir
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns is-vcentered is-multiline is-centered">
+
+                <div class="column is-4-tablet is-3-desktop is-2-widescreen">
+                    <nav class="menu">
+                      <p class="menu-label">
+                        Menu
+                      </p>
+                      <ul class="menu-list">
+                        <li>
+                          <a class="is-active" href="dashboard.html">
+                            <span class="icon">
+                              <i class="fa fa-tachometer"></i>
+                            </span>
+                            Dashboard
+                            </a>
+                        </li>
+                        <li>
+                          <a href="books.html">
+                            <span class="icon">
+                              <i class="fa fa-book"></i>
+                            </span>
+                            Books
+                          </a>
+                        </li>
+                        <li>
+                          <a href="customers.html">
+                            <span class="icon">
+                              <i class="fa fa-address-book"></i>
+                            </span>
+                            Customers
+                          </a>
+                        </li>
+                        <li>
+                          <a href="orders.html">
+                            <span class="icon">
+                              <i class="fa fa-file-text-o"></i>
+                            </span>
+                            Orders
+                          </a>
+                        </li>
+                      </ul>
+                    </nav>
+                </div>
+          
+                <div id="caja" class="column is-three-quarters">
+                    <div class="table-container">
+                        <table class="table is-bordered is-striped is-hoverable ">
+                            <thead class="has-background-grey ">
+                                <tr>
+                                    <th class="has-text-white">ID</th>
+                                    <th class="has-text-white">Nombre</th>
+                                    <th class="has-text-white">Apellidos</th>
+                                    <th class="has-text-white">DNI</th>
+                                    <th class="has-text-white">Ocupación</th>
+                                    <th class="has-text-white">Número</th>
+                                
+                                </tr>
+                            </thead>
+                            <tfoot class="has-background-grey ">
+                                <tr>
+                                    <th class="has-text-white">ID</th>
+                                    <th class="has-text-white">Nombre</th>
+                                    <th class="has-text-white">Apellidos</th>
+                                    <th class="has-text-white">DNI</th>
+                                    <th class="has-text-white">Ocupación</th>
+                                    <th class="has-text-white">Número</th>
+                                </tr>
+                            </tfoot>
+                            <tbody >
+                                <tr>
+                                    <th>1</th>
+                                    <td>Joselito</td>
+                                    <td>El primero de su nombre</td>
+                                    <td>12345678H</td>
+                                    <td>Paseador de perros</td>
+                                    <td>3</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <th>2</th>
+                                    <td>38</td>
+                                    <td>23</td>
+                                    <td>12</td>
+                                    <td>3</td>
+                                    <td>68</td>
+                                </tr>
+                                <tr>
+                                    <th>3</th>
+                                    <td>38</td>
+                                    <td>23</td>
+                                    <td>12</td>
+                                    <td>3</td>
+                                    <td>68</td>
+                                </tr>
+                                <tr>
+                                    <th>4</th>
+                                    <td>38</td>
+                                    <td>23</td>
+                                    <td>12</td>
+                                    <td>3</td>
+                                    <td>68</td>
+                                </tr>
+                            
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns is-vcentered is-centered">
+
+                <div class="column is-2">   <!-- le quitamos is-4-tablet is-3-desktop is-2-widescreen -->
+                    <nav class="menu">
+                      <p class="menu-label">
+                        Menu
+                      </p>
+                      <ul class="menu-list">
+                        <li>
+                          <a class="is-active" href="dashboard.html">
+                            Dashboard
+                            </a>
+                        </li>
+                        <li>
+                          <a href="books.html">
+                            Books
+                          </a>
+                        </li>
+                        <li>
+                          <a href="customers.html">
+                            Customers
+                          </a>
+                        </li>
+                        <li>
+                          <a href="orders.html">
+                            Orders
+                          </a>
+                        </li>
+                      </ul>
+                    </nav>
+                </div>
+          
+                <div id="caja" class="column">  <!-- dejamos el ancho de la column en auto -->
+                    <div class="table-container">
+                        <table class="table is-bordered is-striped is-hoverable is-narrow">   <!-- fuera el is-striped  -->
+                            <thead class="has-background-grey ">
+                                <tr>
+                                    <th class="has-text-white">ID</th>
+                                    <th class="has-text-white">Nombre</th>
+                                    <th class="has-text-white">Apellidos</th>
+                                    <th class="has-text-white">DNI</th>
+                                    <th class="has-text-white">Ocupación</th>
+                                    <th class="has-text-white">Número</th>
+                                
+                                </tr>
+                            </thead>
+                            <tfoot class="has-background-grey ">
+                                <tr>
+                                    <th class="has-text-white">ID</th>
+                                    <th class="has-text-white">Nombre</th>
+                                    <th class="has-text-white">Apellidos</th>
+                                    <th class="has-text-white">DNI</th>
+                                    <th class="has-text-white">Ocupación</th>
+                                    <th class="has-text-white">Número</th>
+                                </tr>
+                            </tfoot>
+                            <tbody >
+                                <tr>
+                                    <th>1</th>
+                                    <td>Joselito</td>
+                                    <td>El primero de su nombre</td>
+                                    <td>12345678H</td>
+                                    <td>Paseador de perros</td>
+                                    <td>3</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <th>2</th>
+                                    <td>38</td>
+                                    <td>23</td>
+                                    <td>12</td>
+                                    <td>3</td>
+                                    <td>68</td>
+                                </tr>
+                                <tr>
+                                    <th>3</th>
+                                    <td>38</td>
+                                    <td>23</td>
+                                    <td>12</td>
+                                    <td>3</td>
+                                    <td>68</td>
+                                </tr>
+                                <tr>
+                                    <th>4</th>
+                                    <td>38</td>
+                                    <td>23</td>
+                                    <td>12</td>
+                                    <td>3</td>
+                                    <td>68</td>
+                                </tr>
+                            
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="columns is-mobile is-centered">
+            <div id="caja" class="column is-three-quarters">
+                <div class="table-container">
+                    <table class="table is-bordered is-striped is-hoverable ">
+                        <thead class="has-background-grey ">
+                            <tr>
+                                <th class="has-text-white">ID</th>
+                                <th class="has-text-white">Nombre</th>
+                                <th class="has-text-white">Apellidos</th>
+                                <th class="has-text-white">DNI</th>
+                                <th class="has-text-white">Ocupación</th>
+                                <th class="has-text-white">Número</th>
+                            
+                            </tr>
+                        </thead>
+                        <tfoot class="has-background-grey ">
+                            <tr>
+                                <th class="has-text-white">ID</th>
+                                <th class="has-text-white">Nombre</th>
+                                <th class="has-text-white">Apellidos</th>
+                                <th class="has-text-white">DNI</th>
+                                <th class="has-text-white">Ocupación</th>
+                                <th class="has-text-white">Número</th>
+                            </tr>
+                        </tfoot>
+                        <tbody >
+                            <tr>
+                                <th>1</th>
+                                <td>Joselito</td>
+                                <td>El primero de su nombre</td>
+                                <td>12345678H</td>
+                                <td>Paseador de perros</td>
+                                <td>3</td>
+                                
+                            </tr>
+                            <tr>
+                                <th>2</th>
+                                <td>38</td>
+                                <td>23</td>
+                                <td>12</td>
+                                <td>3</td>
+                                <td>68</td>
+                            </tr>
+                            <tr>
+                                <th>3</th>
+                                <td>38</td>
+                                <td>23</td>
+                                <td>12</td>
+                                <td>3</td>
+                                <td>68</td>
+                            </tr>
+                            <tr>
+                                <th>4</th>
+                                <td>38</td>
+                                <td>23</td>
+                                <td>12</td>
+                                <td>3</td>
+                                <td>68</td>
+                            </tr>
+                        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

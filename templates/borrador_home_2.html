@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/bulma.css">
+    <link rel="stylesheet" href="../static/css/estilos.css">
+    <title>Document</title>
+</head>
+<body>
+
+    
+                  
+                  
+            
+
+            
+
+    <form action="" method="post">
+
+        <!-- aqui va el FOR de las preguntas-->
+        {% for obj_preg in preg_aleat_con_resp %}
+
+        <section class="section">   <!-- Bloque de 2 columnas multiline automaticas-->
+
+            <div class="columns is-multiline">   <!-- bloque ppal de columnas de de la pagina -->
+                <div class="column"> <!-- columna de la izqda. para las preguntas -->
+                    <div class="block">
+                        <h3>Pregunta <strong>{{loop.index}} / 10</strong></h3>
+                        <div class="block box notification is-warning">
+                            
+                            {{ obj_preg.cuerpo }}
+
+                        </div>
+                    </div>
+                </div>
+                <div class="column"> <!-- columna de la dcha. para las respuestas -->
+                    <p>
+                        Respuestas:
+                    </p>
+
+                    <!-- aqui va el FOR de las respuestas a la pregunta-->
+                    {% for obj_resp in obj_preg.l_obj_respuestas %}
+                    <div class="field">
+                        <div class="control">
+                            <label class="radio">
+                            <input type="radio" name="respuesta_1">
+                            {{ obj_resp.cuerpo }}
+                            </label>
+                        </div> 
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        {% endfor %}
+        
+    
+    </form>
+            
+            
+            
+            
+
+            
+        
+    
+    
+</body>
+</html>

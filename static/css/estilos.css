@@ -1,0 +1,67 @@
+.notification{
+    font-size: x-large;
+}
+
+.radio {
+    display:block;
+    text-align: left;
+    padding: 10px 30px;;
+}
+
+
+#caja {
+    background-color: aquamarine;
+}
+#cajaExt {
+    background-color: violet;
+}
+
+div {
+    text-align: center;
+}
+
+div table{
+    margin: 0 auto;
+    border: 5px;
+    border-collapse: separate;
+}
+
+
+tbody tr:hover{
+    background-color: cornflowerblue;
+}
+
+
+
+.columns{
+    border: 2px red solid;
+}
+.column{
+    border: 2px blue solid;
+}
+
+h2{
+    text-align: center;
+    text-transform: uppercase;
+    font-size: x-large;
+}
+
+
+
+
+.table.is-hoverable tbody tr:not(.is-selected) {
+    background-color: rgb(220, 220, 220);
+  }     /* cebrea el fondo de las filas según el is-striped (las impares) */
+
+
+
+  .table.is-hoverable.is-striped tbody tr:not(.is-selected):hover {
+    background-color: rgb(162, 227, 144);
+  } /* al sobrevolar las filas del is-striped (impares) cambia el color de la fila al mismo verde */
+
+  
+  .table.is-hoverable.is-striped tbody tr:not(.is-selected):hover:nth-child(even) {
+    background-color: rgb(162, 227, 144);
+  } /* al sobrevolar las filas pares cambia el color de la fila a este verde */
+
+ 
