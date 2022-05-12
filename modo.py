@@ -4,7 +4,7 @@ class Modo():
     def __init__(self, 
                 tmax_ju=60, 
                 tmax_preg=5, 
-                num_preg=5, 
+                num_preg=10, 
                 num_jug=1) -> None:
                 
         self.__tmax_juego = tmax_ju

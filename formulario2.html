@@ -1,0 +1,105 @@
+{%extends 'base_estilos.html'%}
+
+{%block title%}Edición{%endblock%}
+
+{%block content%}
+<div class="columns">
+  <div class="column is-half is-offset-one-quarter" style="border:1px solid rgb(74, 73, 73);border-radius: 6px;">
+
+    <div class="hero is-primary is-small">
+      <div class="hero-body">
+        <h2 class="title">Datos personales</h2>
+      </div>
+    </div>
+    <br>
+    <form class="form-horizontal" action="/guardar" method="post">
+      <fieldset>
+
+        <!-- Form Name -->
+
+        <input type="hidden" id="id" name="id" value="{% if datos %}{{datos[0]}} {%endif%}">
+
+        <!-- Text input-->
+        <div class="field">
+          <label class="label" for="nombre">Nombre:</label>
+          <div class="control">
+            <input type="text" id="nombre" name="nombre" value="{% if datos %}{{datos[1]}} {%endif%}" class="input ">
+
+          </div>
+        </div>
+        <!-- Text input-->
+        <div class="field">
+          <label class="label" for="nombre">Apellidos:</label>
+          <div class="control">
+            <input type="text" id="apellidos" name="apellidos" value="{% if datos %}{{datos[2]}} {%endif%}"
+              class="input ">
+
+          </div>
+        </div>
+        <!-- Text input-->
+        <div class="field">
+          <label class="label" for="nombre">D.N.I.:</label>
+          <div class="control">
+            <input type="text" id="dni" name="dni" value="{% if datos %}{{datos[3]}} {%endif%}" class="input ">
+          </div>
+        </div>
+
+
+        <h2 class="label">Ocupación</h2>
+        <div class="select is-normal">
+          <select id="ocupacion" name="ocupacion">
+            <option value="-1">Seleccione ocupación</option>
+            {%for o in ocupaciones%}
+            <option value="{{o[0]}}" {%if (datos) and (datos[4]==o[0]) %}selected {%endif%}>{{o[1]}}</option>
+            {%endfor%}
+          </select>
+        </div>
+        <br><br>
+        <div class="columns">
+          <div class="column">
+
+
+            <h2 class="label">Números</h2>
+            <div class="control">
+              {%for num in numeros%}
+              <label class="radio" for="dato{{num[0]}}">
+                <input type="radio" id="dato{{num[0]}}" name="numero" value="{{num[0]}}" {%if (datos) and
+                  (num[0]==datos[5]) %}checked{%endif%}>&nbsp;{{num[1]}}
+              </label><br />
+              {%endfor%}
+            </div>
+            <br>
+          </div>
+
+          <div class="column">
+            <h2 class="label">Vehículos</h2>
+            <div class="control">
+              {%for v in vehiculos%}
+              <label class="checkbox" for="vh{{v[0]}}">
+                <input type="checkbox" id="vh{{v[0]}}" name="vehiculo" value="{{v[0]}}" {%if (mis_vehiculos) and v[0] in
+                  mis_vehiculos%}checked{%endif%}>&nbsp;{{v[1]}}
+              </label><br>
+              {%endfor%}
+            </div>
+          </div>
+        </div>
+        <br><br>
+
+
+
+        <!-- Button (Double) -->
+        <div class="field is-grouped is-grouped-right">
+          <div class="control">
+            <input type="submit" class="button is-success" value="Enviar">
+            <a class="button  is-warning" href="/">Cancelar</a>
+
+          </div>
+        </div>
+
+      </fieldset>
+    </form>
+  </div>
+
+</div>
+<br>
+{%endblock%}

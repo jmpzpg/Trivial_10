@@ -16,6 +16,7 @@ from settings import STATIC_FILES,BD,TEMPLATES
 TEMPLATE_PATH.append(TEMPLATES)
 
 modo = Modo()
+lista_aleat_obj_preguntas_con_resp = []
 
 @route('/static/<filename:path>')
 def server_static(filename):
@@ -40,7 +41,8 @@ def tomar_preguntas_aleat_con_sus_resp_de_la_bd(modo):
         Crea los objetos pregunta y respuesta correspondiente.
         Devuelve una lista de objetos pregunta, incluyendo sus obj resp en otra lista
     '''
-    lista_aleat_obj_preguntas_con_resp = []
+    if lista_aleat_obj_preguntas_con_resp:
+        lista_aleat_obj_preguntas_con_resp.clear()
     num_preguntas = modo.num_preguntas
     bd = Sqlite('trivial_sqlite.db')                 # filas_aleat_preg es una lista de tuplas [(id,cuerpo,tema_id,dific_id)*num_preg]
     filas_aleat_preg = bd.leer_tabla('Pregunta', 1, limit=num_preguntas)  # el 1 indica que el select sea aleatorio
@@ -182,11 +184,34 @@ def bloque_jugadores():
 # -------------------------------------------------------------------------------------
 
 @route('/')
-@jinja2_view('borrador_home_2.html')
+@jinja2_view('borrador_home_3.html')
 def home():
     resp = tomar_preguntas_aleat_con_sus_resp_de_la_bd(modo)
     return {'preg_aleat_con_resp' : resp}
 
+# -------------------------------------------------------------------------------------
+
+@route('/correccion', method='POST')
+@jinja2_view('correccion.html')
+def correccion():
+    aciertos = 0
+    dic_idpreg_idresp_seleccionada = request.POST
+    i = 0
+    for id_preg , id_resp_selecc in dic_idpreg_idresp_seleccionada.items():
+        id_p = int(id_preg)
+        id_r = int(id_resp_selecc)       
+        #listorra = lista_aleat_obj_preguntas_con_resp[i].l_obj_respuestas
+        for resp in lista_aleat_obj_preguntas_con_resp[i].l_obj_respuestas:
+            if resp.correcta == 1 and resp.id == id_r:
+                aciertos += 1
+                break
+        i += 1
+        print('fin')
+
+    
+    return {'aciertos' : aciertos}
+
+# -------------------------------------------------------------------------------------
 
 
 # =====================================================================================
