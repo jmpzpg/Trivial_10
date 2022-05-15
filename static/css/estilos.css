@@ -1,14 +1,40 @@
 .notification{
     font-size: x-large;
+    /* margin-top: 40px; */
+    padding: 20px;
 }
 
 .radio {
     display:block;
     text-align: left;
-    padding: 10px 30px;;
+    padding: 7px 50px;;
 }
+.center {
+    margin: 5% auto;
+}
+/* 
+.formulario input[type="radio"] {
+    display: none;
+} */
 
+div .block {
+    margin: 25px 0;
+    /* padding: 3rem 0.5rem; */
+    padding: 0.5rem 0.1rem;
 
+} 
+
+/* .table tr .is-selected:hover{
+    
+         
+    background: primary;
+        
+    
+} */
+
+/* label {
+    padding: 5px;
+} */
 #caja {
     background-color: aquamarine;
 }
@@ -33,12 +59,12 @@ tbody tr:hover{
 
 
 
-.columns{
+/* .columns{
     border: 2px red solid;
 }
 .column{
     border: 2px blue solid;
-}
+}   */
 
 h2{
     text-align: center;

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/bulma.css">
+    <link rel="stylesheet" href="../static/css/estilos.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="box">
+        <article class="media">
+            
+          
+            <div class="media-content">
+                <div class="content">
+                    <figure class="center">
+                        <img src="../static/icons/logo_trivial.png" alt="Image">
+                    </figure>
+                <p>
+                    <strong>Nuestro trabajado juego basado en el Trivial de toda la vida</strong> <small>@jmpzpg</small>
+                    <br>
+                    Por favor, selecciona un jugador para comnenzar el juego.
+                </p>
+
+                    <ol>
+                        {% for jug_ptos in jug_disponibles.values() %}
+                        <li>
+                            
+                            <a href="/jugar/{{ jug_ptos.nombre}}"> {{jug_ptos.nombre}}</a> ( Puntos acumulados = {{jug_ptos.total_puntos}} )
+                            
+                        </li>
+
+                        <a class="button is-link" href="/jugar/{{ jug_ptos.nombre}}"> {{jug_ptos.nombre}}</a> ( Puntos acumulados = {{jug_ptos.total_puntos}} )
+
+                        {% endfor %}
+                    </ol>
+
+                </div>
+            </div>
+        </article>
+      </div>
+
+    
+    
+</body>
+
+</html>

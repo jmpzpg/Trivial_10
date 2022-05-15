@@ -1,4 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/bulma.css">
+    <link rel="stylesheet" href="../static/css/estilos.css">
+    <title>Document</title>
+</head>
+<body>
 
-<p>
-    <h2>Respuestas correctas = {{ aciertos }}</h2>
-</p>
+    <div class="box">
+        <article class="media">
+            
+          
+            <div class="media-content">
+                <div class="content">
+                    <figure class="center">
+                        <img src="../static/icons/logo_trivial.png" alt="Image">
+                    </figure>
+                <p>
+                    <strong>Enhorabuena !!<h3>{{ jugador_actual }}</h3>Has contestado correctamente a:</strong> 
+                    
+                    <br>
+                    <br>
+                    {% set ok = aciertos %}
+                    <p><h3>{{ aciertos }}</h3></p>
+                    {% if ok == 0 %}
+                        <p><h3>preguntas !!!</h3></p>
+                    {% endif %}
+                    {% if ok == 1 %}
+                        <p><h3>pregunta !!!</h3></p>
+                    {% endif %}
+                    {% if ok > 1 %}
+                        <p><h3>preguntas !!!</h3></p>
+                    {% endif %}
+                </p>
+
+                    
+
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <div class="box">
+        <article class="media">
+            
+          
+            <div class="media-content">
+                <div class="content">
+                   
+                <p>
+                    <strong>¿ Quieres jugar otra partida ?</strong> 
+                    
+                    <br>
+                    <a class="button is-info" href="/">NUEVA PARTIDA</a>
+                    
+                    
+                </p>
+
+                    
+
+                </div>
+            </div>
+        </article>
+    </div>
+
+    
+    
+</body>
+
+</html>

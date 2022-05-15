@@ -82,7 +82,10 @@ class Sqlite():
         Devuelve una lista con todos los registros que cumplan la condicion dada. 
         """
         try:
-            consulta = "select * from {0} where {1} = {2}".format(tabla, campo_cond, valor_cond)
+            if campo_cond == 'id':
+                consulta = "select * from {0} where {1} = {2}".format(tabla, campo_cond, valor_cond)
+            else:
+                consulta = "select * from {0} where {1} = '{2}'".format(tabla, campo_cond, valor_cond)
             cnx = self.conectar
             cursor = cnx.cursor()
             cursor.execute(consulta)

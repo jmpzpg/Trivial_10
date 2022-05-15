@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/bulma.css">
+    <link rel="stylesheet" href="../static/css/estilos.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="box">
+      <article class="media">
+        <div class="media-left">
+          <figure class="image is-64x64">
+            <img src="../static/icons/logo_trivial.png" alt="Image">
+          </figure>
+        </div>
+        
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong>Nuestro trabajado juego basado en el Trivial de toda la vida</strong> <small>@jmpzpg</small>
+              <br>
+               Anímate y selecciona las respuestas que consideres correctas a las preguntas que hemos seleccioando para ti.
+            </p>
+          </div>
+          
+        </div>
+      </article>
+    </div>
+                  
+    <div class="box box-color">
+        <p>
+            <h2>Te deseamos mucha suerte</h2> 
+        </p>
+        <h1 class="title">{{ nombre_jug }}  !!!</h1>
+    </div>
+            
+
+            
+
+    <form action="/correccion" class="formulario" method="post">
+
+        <!-- aqui va el FOR de las preguntas-->
+        {% for obj_preg in preg_aleat_con_resp %}
+
+
+        <section class="section">
+            <div class="container">
+                <div class="heading">
+                <h1 class="title">pregunta  {{loop.index}} / 10</h1>
+                <!-- <h2 class="subtitle">
+                    A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading
+                </h2> -->
+                </div>
+            </div>
+        </section>
+
+
+        <section class="section">   <!-- Bloque de 2 columnas multiline automaticas-->
+
+            <div class="columns is-multiline">   <!-- bloque ppal de columnas de la pagina -->
+                <div class="column is-half is-offset-one-fifth"> <!-- columna de la izqda. para las preguntas -->
+                    <div class="block">
+                        <!-- <h3>Pregunta <strong>{{loop.index}} / 10</strong></h3> -->
+                        <div class="block box notification is-dark">
+                            
+                            {{ obj_preg.cuerpo }}
+
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-narrow"> <!-- columna de la dcha. para las respuestas -->
+                    <!-- <p>
+                        Respuestas: {{ obj_preg.id }}
+                    </p> -->
+
+                    <!-- aqui va el FOR de las respuestas a la pregunta-->
+                    {% for obj_resp in obj_preg.l_obj_respuestas %}
+                    <div class="field" style="text-align: left;">
+                        <div class="control">
+                            {% set indice = loop.index %}
+                            <!-- <p>el indice es = {{indice}}</p> -->
+                            
+                            <input class="is-checkradio has-background-color is-info" id="resp_{{obj_resp.id}}" type="radio" name="{{ obj_preg.id }}" value="{{obj_resp.id}}" required>    
+                            
+                            {% if indice == 1 %}
+                            <label class="button is-info" for="resp_{{obj_resp.id}}">
+                              <strong>{{ obj_resp.cuerpo }}</strong>
+                            </label>
+                            {% endif %}
+                            {% if indice == 2 %}
+                            <label class="button is-success" for="resp_{{obj_resp.id}}">
+                                <strong>{{ obj_resp.cuerpo }}</strong>
+                            </label>
+                            {% endif %}
+                            {% if indice == 3 %}
+                            <label class="button is-warning" for="resp_{{obj_resp.id}}">
+                                <strong>{{ obj_resp.cuerpo }}</strong>
+                            </label>
+                            {% endif %}
+                            {% if indice == 4 %}
+                            <label class="button is-danger" for="resp_{{obj_resp.id}}">
+                                <strong>{{ obj_resp.cuerpo }}</strong>
+                            </label>
+                            {% endif %}
+                        </div> 
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        {% endfor %}
+        
+        <section class="section">
+        <!-- <div class="container">
+            <div class="heading">
+            <h1 class="title">Section</h1>
+            <h2 class="subtitle">
+                A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading
+            </h2>
+            </div>
+        </div> -->
+        </section>
+        
+        <div class="field">
+            <!-- Button (Double) -->
+            <!-- <div class="field is-grouped is-grouped-center"> -->
+            <div class="field is-centered">
+                <div class="control">
+                <input type="submit" class="button is-success" value="Corregir Trivial">
+                
+    
+                </div>
+            </div>
+        </div>
+    </form>
+    <br>
+    <p></p>
+    <br>    
+            
+
+            
+        
+    
+    
+</body>
+</html>

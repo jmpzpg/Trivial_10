@@ -15,6 +15,10 @@ class Partida():
     @property
     def jugadores(self):
         return self.__jugadores
+    @jugadores.setter
+    def jugadores(self, dic):
+        self.__jugadores = dic
+        self.__marcadores = self.__inicializar_marcadores()
 
     @property
     def modo(self):
@@ -23,6 +27,9 @@ class Partida():
     @property
     def preguntas(self):
         return self.__col_preguntas
+    @preguntas.setter
+    def preguntas(self, lista):
+        self.__col_preguntas = lista
 
     @property
     def marcadores(self):
@@ -32,19 +39,20 @@ class Partida():
         self.__marcadores = dic_new_marc
     
     def __inicializar_marcadores(self):
-        os.system('clear')
         dic_new_marcador = {}
         for jug in self.__jugadores.values():
             dic_new_marcador[jug.nombre] = 0
         return dic_new_marcador
 
-    def iniciar(self):
-        print(self.__jugadores)
-        print(self.__modo)
-        print(self.__col_preguntas)
-        print(self.__marcadores)
+    def iniciar(self, modo):
+        self.__jugadores = {}
+        self.__modo = modo
+        self.__col_preguntas = []
+        self.__marcadores = self.__inicializar_marcadores()
         #print(self.__col_preguntas[0].respuestas)
 
+    def __str__(self) -> str:
+        print(f'nombre: {self.__jugadores} con marcadores: {self.__marcadores}')
 
     def mostrar_info_partida(self):
         print()
@@ -80,7 +88,8 @@ class Partida():
 
     def actualizar_puntos(self, nombre_jugador):
         # si comprobar_respuesta es verdad --> jugador.resultado += 1
+        a = self.__marcadores
         self.__marcadores[nombre_jugador] += 1
-        self.__jugadores[nombre_jugador].resultado += 1
-        self.__jugadores[nombre_jugador].total_puntos += 1
+        self.__jugadores['player_act'].resultado += 1
+        self.__jugadores['player_act'].total_puntos += 1
         tmp = 1

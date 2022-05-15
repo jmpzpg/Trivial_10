@@ -17,6 +17,7 @@ TEMPLATE_PATH.append(TEMPLATES)
 
 modo = Modo()
 lista_aleat_obj_preguntas_con_resp = []
+#partida_actual = Partida(dic_jug, modo, lista_obj_preg_resp)
 
 @route('/static/<filename:path>')
 def server_static(filename):
@@ -26,6 +27,39 @@ def server_static(filename):
 
 # =====================================================================================
 
+
+def iniciar_partida():
+    
+    
+    dic_jug = bloque_jugadores()
+    lista_obj_preg_resp = tomar_preguntas_aleat_con_sus_resp_de_la_bd(modo)
+    
+    partida_actual = Partida(dic_jug, modo, lista_obj_preg_resp)
+    
+  
+    for contador in range(len(lista_obj_preg_resp)):
+        os.system('clear')
+        partida_actual.mostrar_info_partida()
+        print('')
+        bloque_pregunta(partida_actual, contador)
+        partida_actual.mostrar_info_partida()
+    os.system('clear')
+    actulizar_puntos_bd(partida_actual)
+    print('')
+    partida_actual.mostrar_info_partida()
+    items = list(partida_actual.marcadores.items())
+    jug = items[0][0]
+    pts = items[0][1]
+    print('')
+    print('Partida finalizada. Número de respuestas correctas = {0}. Puntos conseguidos = {1}'.format(pts,pts))
+    print('')
+    otra = input('No quieres jugar otra partida?. Pulsa "n" para salir: ')
+    if otra == 'n' or otra == 'N':
+        nueva_partida = False
+
+
+
+
 def actulizar_puntos_bd(partida_actual):
     bd = Sqlite('trivial_sqlite.db')
     for obj_jug in partida_actual.jugadores.values():
@@ -34,7 +68,7 @@ def actulizar_puntos_bd(partida_actual):
         bd.actualizar_registro_solo_puntos('Jugador', 'total_puntos', puntos, 'id', id_tabla)
 
 
-def tomar_preguntas_aleat_con_sus_resp_de_la_bd(modo):
+def tomar_preguntas_aleat_con_sus_resp_de_la_bd(): # (modo)
     '''
         Toma de la BD el numero de preguntas configurado en Modo. 
         Busca las respuests de cada una de esas preguntas.
@@ -54,6 +88,19 @@ def tomar_preguntas_aleat_con_sus_resp_de_la_bd(modo):
             lista_obj_respuestas_de_preg.append(tmp)
         lista_aleat_obj_preguntas_con_resp.append(Pregunta(fila[0], fila[1], fila[2], fila[3], lista_obj_respuestas_de_preg))
     return lista_aleat_obj_preguntas_con_resp   # [obj Pregunta] = id, cuerpo, tema, dific, lista obj Respuesta
+
+
+def tomar_jugadores_de_la_bd():
+    bd = Sqlite('trivial_sqlite.db')
+    lista_jugadores = bd.leer_tabla('Jugador')  # jugadores que hay almacenados en la BD
+    dic_players = {}
+    for jug in lista_jugadores:     # llenamos dic con obj jugadores from la BD. Todos los existentes
+                                    # se crea 1 obj jugador para cada jugador de la BD
+        dic_players[jug[1]]= Jugador(jug[1],   # campo nombre de la tabla Jugador
+                                    jug[2],    # campo resultado de la tabla Jugador
+                                    jug[3],    # campo total_puntos de la tabla Jugador
+                                    jug[0])    # campo id de la tabla Jugador 
+    return dic_players      # dic { nombre_jug : obj_jug , . . .}
 
 # -------------------------------------------------------------------------------------
 
@@ -179,15 +226,25 @@ def bloque_jugadores():
               
 # -------------------------------------------------------------------------------------
 
+@route('/')
+@jinja2_view('usuarios_2.html')
+def home():
+    dic_jug_en_bd = tomar_jugadores_de_la_bd()
+    return {'jug_disponibles' : dic_jug_en_bd}
 
        
 # -------------------------------------------------------------------------------------
 
-@route('/')
+@route('/jugar/<jugador>')
 @jinja2_view('borrador_home_3.html')
-def home():
-    resp = tomar_preguntas_aleat_con_sus_resp_de_la_bd(modo)
-    return {'preg_aleat_con_resp' : resp}
+def juego(jugador):
+    resp = tomar_preguntas_aleat_con_sus_resp_de_la_bd()
+    #partida_actual = Partida(dic_jug, modo, lista_obj_preg_resp)
+    datos = {
+        'nombre_jug': jugador,
+        'preg_aleat_con_resp': resp
+    }
+    return datos
 
 # -------------------------------------------------------------------------------------
 
@@ -203,11 +260,11 @@ def correccion():
         #listorra = lista_aleat_obj_preguntas_con_resp[i].l_obj_respuestas
         for resp in lista_aleat_obj_preguntas_con_resp[i].l_obj_respuestas:
             if resp.correcta == 1 and resp.id == id_r:
-                aciertos += 1
+                aciertos += 1 
                 break
         i += 1
         print('fin')
-
+    #partida_actual.iniciar(modo)
     
     return {'aciertos' : aciertos}
 
@@ -216,7 +273,7 @@ def correccion():
 
 # =====================================================================================
 
-run(host='localhost', port=8000,debug=True,reloader=True)
+run(host='localhost', port=8008,debug=True,reloader=True)
 #bd = Sqlite('trivial_sqlite.db')
 #bd.insertar_registro('Jugador','nombre','flash gordo')
 #lista_jugadores = bd.leer_tabla('Jugador')

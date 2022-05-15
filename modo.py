@@ -2,8 +2,8 @@ class Modo():
     ''' Modela los parámetros de la partida. Num jugadores, num preguntas y tiempos
     '''
     def __init__(self, 
-                tmax_ju=60, 
-                tmax_preg=5, 
+                tmax_ju=100, 
+                tmax_preg=10, 
                 num_preg=10, 
                 num_jug=1) -> None:
                 
